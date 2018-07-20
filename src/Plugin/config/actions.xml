@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<remv1:Remediation-Plugin xmlns:remv1="RemediationVersion1.xsd" Name="Nmap" Guid="99c1e3b9-c773-4754-8340-5c394c383c54" Version="1" IsLogRhythmPlugin="true">
+
+  <!-- Intense Scan -->
+
+  <remv1:Action Name="Intense Scan" Command="powershell.exe">
+    <remv1:ConstantParameter Name="Script" Switch="-file nmap.ps1" Order="1" />
+    <remv1:ConstantParameter Name="Nmap Flags/Options" Switch="-NmapCommand &quot;-T4 -A -v&quot;" Order="2" />
+    <remv1:StringParameter Name="Nmap Target" Switch=" -Target " Order="3">
+        <remv1:DefaultInput>
+          <remv1:SIP />
+        </remv1:DefaultInput>
+    </remv1:StringParameter>
+  </remv1:Action>
+
+  <!-- Intense Scan Plus UDP -->
+
+  <!-- Intense Scan, All TCP Ports -->
+
+  <!-- Ping Scan -->
+
+  <remv1:Action Name="Ping Scan" Command="powershell.exe">
+    <remv1:ConstantParameter Name="Script" Switch="-file nmap.ps1" Order="1" />
+    <remv1:ConstantParameter Name="Nmap Flags/Options" Switch="-NmapCommand -sn" Order="2" />
+    <remv1:StringParameter Name="Nmap Target" Switch=" -Target " Order="3">
+      <remv1:DefaultInput>
+        <remv1:SIP />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+  </remv1:Action>
+ 
+  <!-- Quick Scan -->
+
+  <remv1:Action Name="Quick Scan" Command="powershell.exe">
+    <remv1:ConstantParameter Name="Script" Switch="-file nmap.ps1" Order="1" />
+    <remv1:ConstantParameter Name="Nmap Flags/Options" Switch="-NmapCommand &quot;-T4 -F&quot;" Order="2" />
+    <remv1:StringParameter Name="Nmap Target" Switch=" -Target " Order="3">
+        <remv1:DefaultInput>
+          <remv1:SIP />
+        </remv1:DefaultInput>
+    </remv1:StringParameter>
+  </remv1:Action>
+
+  <!-- Regular Scan -->
+
+  <remv1:Action Name="Regular Scan" Command="powershell.exe">
+    <remv1:ConstantParameter Name="Script" Switch="-file nmap.ps1" Order="1" />
+    <remv1:ConstantParameter Name="Nmap Flags/Options" Switch=" -NmapCommand &quot;&quot;" Order="2" />
+    <remv1:StringParameter Name="Nmap Target" Switch=" -Target " Order="3">
+        <remv1:DefaultInput>
+          <remv1:SIP />
+        </remv1:DefaultInput>
+    </remv1:StringParameter>
+  </remv1:Action>
+
+  <!-- Slow Comprehensive Scan -->
+
+  <!-- 7/19/18: TO DO: Temporarily removed. This action currently does not work properly because of the quote marks within the Nmap flags; need to modify PowerShell script to handle this -->
+
+  <!-- Custom Scan -->
+
+  <remv1:Action Name="Custom Scan" Command="powershell.exe">
+    <remv1:ConstantParameter Name="Script" Switch="-file nmap.ps1" Order="1" />
+    <remv1:StringParameter Name="Nmap Flags/Options" Switch=" -NmapCommand " Order="2">
+        <remv1:DefaultInput>
+          <remv1:StaticInput Value="Specify flags here" />
+        </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="Nmap Target" Switch=" -Target " Order="3">
+        <remv1:DefaultInput>
+          <remv1:StaticInput Value="" />
+        </remv1:DefaultInput>
+    </remv1:StringParameter>
+  </remv1:Action>
+
+</remv1:Remediation-Plugin>
